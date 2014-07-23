@@ -32,6 +32,26 @@ TARGET_SCREEN_WIDTH := 1080
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 
+# Audio configuration
+PRODUCT_COPY_FILES += \
+    device/samsung/hlte/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/samsung/hlte/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/samsung/hlte/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    af.resampler.quality=4 \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.gapless.enabled=false
+
+# Thermal config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
+
+# Media Profile
+PRODUCT_COPY_FILES += \
+    device/samsung/hlte/media/media_profiles.xml:system/etc/media_profiles.xml
+
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # Permissions
