@@ -18,5 +18,10 @@ $(call inherit-product, vendor/aokp/configs/common_full_phone.mk)
 
 $(call inherit-product, device/samsung/hlte/full_hlte.mk)
 
+# Vendor security patch level
+# Security patch level from Samsung firmare N9005XXSGBQD5_N9005OJVGBPF1_XSI
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2016-06-01
+
 PRODUCT_DEVICE := hlte
 PRODUCT_NAME := aokp_hlte
